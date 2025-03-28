@@ -16,12 +16,13 @@ fun main() {
     techChecks()
     println("\n===> Taz...")
     println(Taz.color)
+
 }
 
 fun driveCars() {
     val vaz1 = Togliatti.buildCar(Vaz2107, Car.Plates("123", 77))
     val vaz2 = Togliatti.buildCar(Vaz2108, Car.Plates("321", 78))
-
+    fuelCars(listOf(vaz1,vaz2, Taz))  // Заправляем машины
     println("Экземпляры класса имеют разное внутреннее состояние:")
     vaz1.wheelToRight(10)
     println(vaz1.toString()) // Выводит 10 и случайную скорость
@@ -77,7 +78,6 @@ fun getColor() {
 fun techChecks() {
     val vaz1 = Vaz2107.build(Car.Plates("123", 77))
     val vaz2 = Vaz2108.build(Car.Plates("321", 78))
-
     repairEngine(vaz1)
     repairEngine(vaz2)
 }
@@ -90,4 +90,10 @@ fun repairEngine(car: VazPlatform) {
         is VazEngine.LADA_2107 -> println("Чистка карбюратора у двигателя объемом ${car.engine.volume} куб.см у машины $car")
         is VazEngine.SAMARA_2108 -> println("Угол зажигания у двигателя объемом ${car.engine.volume} куб.см у машины $car")
     }
+}
+
+fun fuelCars(cars:List<Car>) {
+    println("\n===> fuel cars...")
+    val tankStation = GasStation()
+    tankStation.addFuelToCar(cars)
 }

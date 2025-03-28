@@ -18,6 +18,9 @@ object Taz: Car {
     override val carOutput: CarOutput
         get() = throw NotImplementedError("Приборов нет")
 
+    override val tankMouth: TankMouth
+        get() = throw NotImplementedError("Бум")
+
     /**
      * Получить оборудование
      */
